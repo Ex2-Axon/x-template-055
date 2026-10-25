@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baan Suan Lodge & City Inn Minimal - Micro-Gallery</title>
+
+    <!-- Tailwind CSS Play CDN for single-file web preview execution -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        border: 'hsl(var(--border, 214.3 31.8% 91.4%))',
+                        background: 'hsl(var(--background, 0 0% 100%))',
+                        foreground: 'hsl(var(--foreground, 222.2 84% 4.9%))',
+                        card: 'hsl(var(--card, 0 0% 100%))',
+                        'card-foreground': 'hsl(var(--card-foreground, 222.2 84% 4.9%))',
+                        muted: 'hsl(var(--muted, 210 40% 96.1%))',
+                        'muted-foreground': 'hsl(var(--muted-foreground, 215.4 16.3% 46.9%))',
+                        primary: 'hsl(var(--primary, 222.2 47.4% 11.2%))',
+                        'primary-foreground': 'hsl(var(--primary-foreground, 210 40% 98%))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --muted: 210 40% 96.1%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --border: 214.3 31.8% 91.4%;
+            --primary: 222.2 47.4% 11.2%;
+            --primary-foreground: 210 40% 98%;
+        }
+
+        .badge-nature {
+            background-color: rgb(236 253 245);
+            color: rgb(6 95 70);
+            border: 1px solid rgb(167 243 208);
+        }
+
+        .badge-minimal {
+            background-color: rgb(244 244 245);
+            color: rgb(39 39 42);
+            border: 1px solid rgb(228 228 231);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-foreground antialiased selection:bg-emerald-500/20">
+
+    <!-- Top Controller Bar: Template Switcher & Catalog Link -->
+    <aside class="sticky top-0 z-50 border-b border-border bg-card/90 backdrop-blur-md px-4 py-2.5 shadow-xs">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-2">
+                <span class="font-semibold text-foreground">Micro-Gallery Preview:</span>
+                <div class="inline-flex rounded-lg border border-border p-0.5 bg-muted">
+                    <button id="btn-nature" onclick="switchTemplate('nature')"
+                        class="rounded-md px-3 py-1 font-medium transition shadow-xs bg-card text-foreground">
+                        🌿 Baan Suan Lodge (ธรรมชาติ)
+                    </button>
+                    <button id="btn-minimal" onclick="switchTemplate('minimal')"
+                        class="rounded-md px-3 py-1 font-medium transition text-muted-foreground hover:text-foreground">
+                        🏢 City Inn Minimal (มินิมอล)
+                    </button>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 text-muted-foreground">
+                <span class="hidden sm:inline">Backward-compatible catalog (63 templates intact)</span>
+                <span class="rounded bg-emerald-100 px-2 py-0.5 text-[11px] font-semibold text-emerald-800">
+                    Booking-Free Mode
+                </span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- In-Page Header Navigation -->
+    <header class="border-b border-border/50 bg-background/95 sticky top-[49px] z-40 backdrop-blur">
+        <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+            <div class="flex items-center gap-3">
+                <a href="#hero" class="text-lg font-bold tracking-tight text-foreground flex items-center gap-2">
+                    <span id="nav-brand-icon">🌿</span>
+                    <span id="nav-brand-name">Baan Suan Lodge</span>
+                </a>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
+                <a href="#about" class="transition hover:text-foreground">เกี่ยวกับเรา</a>
+                <a href="#rooms" class="transition hover:text-foreground">ห้องพัก</a>
+                <a href="#facilities" class="transition hover:text-foreground">สิ่งอำนวยความสะดวก</a>
+                <a href="#gallery" class="transition hover:text-foreground">บรรยากาศ</a>
+                <a href="#location" class="transition hover:text-foreground">ที่ตั้ง</a>
+            </nav>
+
+            <div>
+                <a href="#contact" id="nav-cta-btn"
+                    class="rounded-full px-4 py-2 text-xs font-semibold text-white shadow-xs transition bg-emerald-700 hover:bg-emerald-800">
+                    สอบถามที่พัก
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero"
+        class="relative overflow-hidden transition-colors duration-300 py-16 sm:py-24 bg-emerald-950 text-emerald-50">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+            <div class="grid items-center gap-10 md:grid-cols-2">
+                <div>
+                    <span id="hero-theme-badge"
+                        class="inline-block rounded-full px-3 py-1 text-xs font-medium tracking-wide uppercase bg-emerald-900/60 text-emerald-200 border border-emerald-800">
+                        ธรรมชาติ &amp; สโลว์ไลฟ์
+                    </span>
+                    <h1 id="hero-title" class="mt-4 text-3xl font-extrabold tracking-tight sm:text-5xl">
+                        Baan Suan Lodge
+                    </h1>
+                    <p id="hero-tagline" class="mt-4 text-base leading-relaxed text-emerald-200/90 sm:text-lg">
+                        พักผ่อนท่ามกลางธรรมชาติ กลับมาพักใจให้สดชื่น
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <a href="#rooms" id="hero-cta-primary"
+                            class="rounded-lg px-5 py-2.5 text-sm font-medium text-white shadow-sm transition bg-emerald-700 hover:bg-emerald-800">
+                            ดูประเภทห้องพัก
+                        </a>
+                        <a href="#contact"
+                            class="rounded-lg border border-current px-5 py-2.5 text-sm font-medium opacity-90 transition hover:opacity-100">
+                            สอบถามทันที
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-muted">
+                    <img id="hero-image"
+                        src="/home/neon13/workspace/services/next/01-PRODUCTS-BUSINESS/x-template-html013/image/image_1792828833165.jpg"
+                        alt="บรรยากาศหลักของที่พัก"
+                        class="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 sm:py-20 bg-background">
+        <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground">About Us</span>
+            <h2 class="mt-2 text-2xl font-bold tracking-tight sm:text-3xl text-foreground">แนวคิดและบรรยากาศ</h2>
+            <p id="about-text" class="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                บ้านสวนลอดจ์ ซ่อนตัวอยู่ท่ามกลางแมกไม้ร่มรื่นของเชียงใหม่ เหมาะสำหรับการพักผ่อนแบบสโลว์ไลฟ์
+                สูดอากาศบริสุทธิ์ พร้อมเสียงนกร้องยามเช้าและระเบียงชมสวนส่วนตัว
+            </p>
+        </div>
+    </section>
+
+    <!-- Room Types Section -->
+    <section id="rooms" class="py-16 sm:py-20 bg-muted/40 border-y border-border/40">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground">Accommodations</span>
+                <h2 class="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">ประเภทห้องพัก</h2>
+                <p class="mt-2 text-sm text-muted-foreground">
+                    ราคาเริ่มต้นโปร่งใส ติดต่อสอบถามความพร้อมและสำรองห้องพักได้โดยตรง
+                </p>
+            </div>
+
+            <div id="rooms-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Room Cards will be injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities / Amenities Section -->
+    <section id="facilities" class="py-16 sm:py-20 bg-background">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground">Facilities</span>
+                <h2 class="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">สิ่งอำนวยความสะดวก</h2>
+                <p class="mt-2 text-sm text-muted-foreground">พร้อมให้บริการเพื่อให้การพักผ่อนของคุณราบรื่นที่สุด</p>
+            </div>
+
+            <div id="facilities-grid" class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+                <!-- Facility Cards injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Atmosphere / Gallery Section -->
+    <section id="gallery" class="py-16 sm:py-20 bg-muted/40 border-y border-border/40">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground">Gallery</span>
+                <h2 class="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">บรรยากาศโดยรอบ</h2>
+                <p class="mt-2 text-sm text-muted-foreground">ภาพถ่ายจริงจากสถานที่ เพื่อประกอบการตัดสินใจของคุณ</p>
+            </div>
+
+            <div id="gallery-grid" class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <!-- Gallery Images injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Directions Section -->
+    <section id="location" class="py-16 sm:py-20 bg-background">
+        <div class="mx-auto max-w-4xl px-4 sm:px-6">
+            <div class="rounded-2xl border border-border bg-card p-6 shadow-xs sm:p-8">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">📍</span>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-muted-foreground">Location &amp;
+                            Directions</span>
+                        <h2 class="text-2xl font-bold tracking-tight">ที่ตั้งและการเดินทาง</h2>
+                    </div>
+                </div>
+
+                <div class="mt-6 space-y-4 text-sm text-muted-foreground">
+                    <div>
+                        <strong class="text-foreground">ที่อยู่:</strong>
+                        <p id="location-address" class="mt-1 leading-relaxed"></p>
+                    </div>
+                    <div>
+                        <strong class="text-foreground">เส้นทาง:</strong>
+                        <p id="location-directions" class="mt-1 leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-border">
+                    <a id="location-map-btn" href="#" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-xs font-medium text-foreground transition hover:bg-muted">
+                        <span>เปิดนำทางใน Google Maps ↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Inquiry Section (Strictly Contact-Only, No Booking Engine) -->
+    <section id="contact" class="py-16 sm:py-24 bg-muted/40 border-t border-border">
+        <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-muted-foreground">Inquiry &amp; Contact</span>
+            <h2 class="mt-1 text-2xl font-bold tracking-tight sm:text-3xl text-foreground">ติดต่อสอบถามข้อมูล</h2>
+
+            <!-- Mandatory No-Booking Disclaimer -->
+            <div
+                class="mx-auto mt-4 max-w-xl rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-xs text-foreground leading-relaxed">
+                <strong>⚠️ หมายเหตุ:</strong> เว็บไซต์นี้ไม่ใช่ระบบจองออนไลน์ สามารถสอบถามข้อมูลห้องพัก ความพร้อม
+                และการจองได้โดยตรงทางโทรศัพท์หรือ LINE
+            </div>
+
+            <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <a id="btn-call" href="tel:0812345678"
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-xs transition sm:w-auto bg-emerald-700 hover:bg-emerald-800">
+                    <span>📞</span>
+                    <span id="label-call">โทรเลย (081-234-5678)</span>
+                </a>
+
+                <a id="btn-line" href="https://line.me/ti/p/~baansuannature" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white shadow-xs transition hover:bg-emerald-700 sm:w-auto">
+                    <span>💬</span>
+                    <span id="label-line">แอด LINE: @baansuannature</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Preserving Micro-Gallery conventions) -->
+    <footer class="border-t border-border bg-card py-10 text-xs text-muted-foreground">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p>© 2026 Micro-Gallery Lodging Template. All rights reserved.</p>
+                <p class="mt-1 text-[11px]">Baan Suan Lodge (x-template-next-011) &amp; City Inn Minimal
+                    (x-template-next-012)</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#hero" class="transition hover:text-foreground">กลับขึ้นด้านบน ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data definition for both lodging templates
+        const templatesData = {
+            nature: {
+                slug: "x-template-next-011",
+                name: "Baan Suan Lodge",
+                themeName: "nature",
+                icon: "🌿",
+                badge: "ธรรมชาติ & สโลว์ไลฟ์",
+                tagline: "พักผ่อนท่ามกลางธรรมชาติ กลับมาพักใจให้สดชื่น",
+                about: "บ้านสวนลอดจ์ ซ่อนตัวอยู่ท่ามกลางแมกไม้ร่มรื่นของเชียงใหม่ เหมาะสำหรับการพักผ่อนแบบสโลว์ไลฟ์ สูดอากาศบริสุทธิ์ พร้อมเสียงนกร้องยามเช้าและระเบียงชมสวนส่วนตัว",
+                heroImage: "image/image_1792828833165.jpg",
+                heroClasses: "bg-emerald-950 text-emerald-50",
+                badgeClasses: "bg-emerald-900/60 text-emerald-200 border border-emerald-800",
+                btnPrimaryClasses: "bg-emerald-700 hover:bg-emerald-800 text-white",
+                tagClasses: "badge-nature",
+                priceColor: "text-emerald-700",
+                rooms: [
+                    {
+                        name: "Garden View Room",
+                        description: "ห้องพักเตียงเดี่ยวขนาดใหญ่ มองเห็นวิวสวนเขียวขจี อากาศถ่ายเทสบาย เงียบสงบ",
+                        amenities: ["เตียง King Size", "เครื่องปรับอากาศ", "ห้องน้ำส่วนตัว", "Wi-Fi ฟรี", "ระเบียงชมสวน"],
+                        price: "เริ่มต้น 1,290 บาท/คืน",
+                        image: "image/image_1792828834169.jpg"
+                    },
+                    {
+                        name: "Balcony Suite",
+                        description: "ห้องสวีทพร้อมระเบียงกว้างพิเศษ วิวยอดไม้ เหมาะสำหรับจิบกาแฟยามเช้าและอ่านหนังสือ",
+                        amenities: ["เตียง King Size", "โซฟานั่งเล่น", "อ่างอาบน้ำ", "ตู้เย็นขนาดเล็ก", "Wi-Fi ฟรี"],
+                        price: "เริ่มต้น 1,790 บาท/คืน",
+                        image: "image/image_1792828834718.jpg"
+                    },
+                    {
+                        name: "Family Cottage",
+                        description: "บ้านพักแบบคอทเทจแยกหลัง สำหรับครอบครัวหรือกลุ่มเพื่อน สัมผัสธรรมชาติเต็มอิ่ม",
+                        amenities: ["2 ห้องนอน", "ห้องนั่งเล่นส่วนกลาง", "ระเบียงส่วนตัว", "สิ่งอำนวยความสะดวกครบครัน"],
+                        price: "เริ่มต้น 2,490 บาท/คืน",
+                        image: "image/image_1792828835261.jpg"
+                    }
+                ],
+                facilities: [
+                    { name: "Wi-Fi ฟรีความเร็วสูง", icon: "📶" },
+                    { name: "ที่จอดรถสะดวกสบาย", icon: "🚗" },
+                    { name: "อาหารเช้าท้องถิ่นสดใหม่", icon: "🍳" },
+                    { name: "สวนและลานพักผ่อน", icon: "🌳" },
+                    { name: "ระเบียงรับลมธรรมชาติ", icon: "🪑" },
+                    { name: "ชาและน้ำดื่มบริการฟรี", icon: "🍵" }
+                ],
+                gallery: [
+                    "image/image_1792828833165.jpg",
+                    "image/image_1792828837134.jpg",
+                    "https://images.unsplash.com/photo-1540518614846-7ede433c4ef7?auto=format&fit=crop&w=600&q=80",
+                    "image/image_1792828838701.jpg"
+                ],
+                location: {
+                    address: "123 หมู่ 5 ต.บ้านสวน อ.เมือง จ.เชียงใหม่ 50000",
+                    directions: "จากตัวเมืองเชียงใหม่ ใช้ทางหลวงหมายเลข 108 มุ่งหน้าทิศใต้ ประมาณ 8 กม. เลี้ยวเข้าซอยบ้านสวนสงบ สังเกตป้ายทางเข้าไม้สักธรรมชาติ",
+                    mapsUrl: "https://maps.google.com/?q=Chiang+Mai+Thailand"
+                },
+                contact: {
+                    phone: "081-234-5678",
+                    lineId: "baansuannature",
+                    lineUrl: "https://line.me/ti/p/~baansuannature"
+                }
+            },
+            minimal: {
+                slug: "x-template-next-012",
+                name: "City Inn Minimal",
+                themeName: "minimal",
+                icon: "🏢",
+                badge: "มินิมอล โมเดิร์น ใจกลางเมือง",
+                tagline: "เรียบง่าย ใจกลางเมือง ครบทุกความสะดวกสำหรับคนรุ่นใหม่",
+                about: "ซิตี้อินน์ มินิมอล ที่พักดีไซน์คลีนสไตล์โมเดิร์น ตอบโจทย์นักเดินทางและคนทำงานรุ่นใหม่ เดินทางสะดวกสบาย อยู่ใกล้ระบบขนส่งสาธารณะและย่านสตรีทฟู้ด",
+                heroImage: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
+                heroClasses: "bg-zinc-900 text-zinc-50",
+                badgeClasses: "bg-zinc-800 text-zinc-200 border border-zinc-700",
+                btnPrimaryClasses: "bg-zinc-900 hover:bg-zinc-800 text-white",
+                tagClasses: "badge-minimal",
+                priceColor: "text-zinc-900",
+                rooms: [
+                    {
+                        name: "Standard Studio",
+                        description: "ห้องพักขนาดกะทัดรัด ตกแต่งโทนสว่างสไตล์มินิมอล ครบทุกฟังก์ชันการใช้งาน",
+                        amenities: ["เตียง Queen Size", "โต๊ะทำงานพร้อมโคมไฟ", "แอร์", "Smart TV", "Rain Shower"],
+                        price: "เริ่มต้น 890 บาท/คืน",
+                        image: "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=600&q=80"
+                    },
+                    {
+                        name: "Deluxe City Room",
+                        description: "ห้องพักหน้าต่างกระจกบานใหญ่ ชมวิวเมืองยามค่ำคืน โปร่งสบาย สำหรับ 2 ท่าน",
+                        amenities: ["เตียง King Size", "โต๊ะทำงานขนาดกว้าง", "ตู้เย็นขนาดเล็ก", "เซฟในห้อง", "Wi-Fi ฟรี"],
+                        price: "เริ่มต้น 1,190 บาท/คืน",
+                        image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=600&q=80"
+                    }
+                ],
+                facilities: [
+                    { name: "Wi-Fi ความเร็วสูงทั่วบริเวณ", icon: "⚡" },
+                    { name: "ความปลอดภัย Keycard 24 ชม.", icon: "🔑" },
+                    { name: "พื้นที่ Co-working Space", icon: "💻" },
+                    { name: "บริการรับฝากสัมภาระ", icon: "🧳" },
+                    { name: "ที่จอดรถ (จองสิทธิ์ล่วงหน้า)", icon: "🅿️" },
+                    { name: "จุดบริการเครื่องดื่มร้อน 24 ชม.", icon: "☕" }
+                ],
+                gallery: [
+                    "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80"
+                ],
+                location: {
+                    address: "45/2 ถนนสาทร แขวงยานนาวา เขตสาทร กรุงเทพฯ 10120",
+                    directions: "ห่างจากสถานีรถไฟฟ้า BTS ประมาณ 350 เมตร เดินเข้าซอยเพียง 3 นาที หรือต่อรถแท็กซี่สะดวก",
+                    mapsUrl: "https://maps.google.com/?q=Sathorn+Bangkok"
+                },
+                contact: {
+                    phone: "089-876-5432",
+                    lineId: "cityinnminimal",
+                    lineUrl: "https://line.me/ti/p/~cityinnminimal"
+                }
+            }
+        };
+
+        function renderTemplate(themeKey) {
+            const data = templatesData[themeKey];
+            if (!data) return;
+
+            // Update Nav Brand
+            document.getElementById('nav-brand-icon').textContent = data.icon;
+            document.getElementById('nav-brand-name').textContent = data.name;
+
+            // Update Hero Section
+            const heroSec = document.getElementById('hero');
+            heroSec.className = `relative overflow-hidden transition-colors duration-300 py-16 sm:py-24 ${data.heroClasses}`;
+            document.getElementById('hero-title').textContent = data.name;
+            document.getElementById('hero-tagline').textContent = data.tagline;
+            document.getElementById('hero-image').src = data.heroImage;
+
+            const themeBadge = document.getElementById('hero-theme-badge');
+            themeBadge.textContent = data.badge;
+            themeBadge.className = `inline-block rounded-full px-3 py-1 text-xs font-medium tracking-wide uppercase ${data.badgeClasses}`;
+
+            const navCtaBtn = document.getElementById('nav-cta-btn');
+            navCtaBtn.className = `rounded-full px-4 py-2 text-xs font-semibold shadow-xs transition ${data.btnPrimaryClasses}`;
+
+            const heroCtaPrimary = document.getElementById('hero-cta-primary');
+            heroCtaPrimary.className = `rounded-lg px-5 py-2.5 text-sm font-medium shadow-sm transition ${data.btnPrimaryClasses}`;
+
+            // Update About Us
+            document.getElementById('about-text').textContent = data.about;
+
+            // Render Rooms
+            const roomsGrid = document.getElementById('rooms-grid');
+            roomsGrid.innerHTML = data.rooms.map((room) => `
+        <div class="flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-xs transition hover:shadow-md">
+          <div>
+            <div class="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-muted mb-4">
+              <img src="${room.image}" alt="${room.name}" class="h-full w-full object-cover transition-transform duration-300 hover:scale-105" />
+            </div>
+            <h3 class="text-lg font-semibold tracking-tight text-foreground">${room.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted-foreground">${room.description}</p>
+            
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              ${room.amenities.map(a => `<span class="rounded-md px-2 py-0.5 text-xs font-medium ${data.tagClasses}">${a}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="mt-6 border-t border-border pt-4">
+            <div class="text-base font-bold ${data.priceColor}">${room.price}</div>
+            <a
+              href="#contact"
+              class="mt-3 block w-full rounded-lg border border-border py-2 text-center text-xs font-semibold text-foreground transition hover:bg-muted"
+            >
+              สอบถามห้องนี้
+            </a>
+          </div>
+        </div>
+      `).join('');
+
+            // Render Facilities
+            const facilitiesGrid = document.getElementById('facilities-grid');
+            facilitiesGrid.innerHTML = data.facilities.map((f) => `
+        <div class="flex flex-col items-center justify-center rounded-xl border border-border bg-card p-4 text-center text-xs font-medium shadow-xs">
+          <div class="mb-2 text-2xl">${f.icon}</div>
+          <span class="text-foreground">${f.name}</span>
+        </div>
+      `).join('');
+
+            // Render Gallery
+            const galleryGrid = document.getElementById('gallery-grid');
+            galleryGrid.innerHTML = data.gallery.map((img, idx) => `
+        <div class="aspect-square overflow-hidden rounded-xl border border-border bg-muted shadow-xs">
+          <img src="${img}" alt="ภาพบรรยากาศที่ ${idx + 1}" class="h-full w-full object-cover transition duration-300 hover:scale-105" />
+        </div>
+      `).join('');
+
+            // Render Location & Contact
+            document.getElementById('location-address').textContent = data.location.address;
+            document.getElementById('location-directions').textContent = data.location.directions;
+            document.getElementById('location-map-btn').href = data.location.mapsUrl;
+
+            // Contact Buttons
+            const cleanPhone = data.contact.phone.replace(/[^0-9]/g, '');
+            const btnCall = document.getElementById('btn-call');
+            btnCall.href = `tel:${cleanPhone}`;
+            btnCall.className = `inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold shadow-xs transition sm:w-auto ${data.btnPrimaryClasses}`;
+            document.getElementById('label-call').textContent = `โทรเลย (${data.contact.phone})`;
+
+            const btnLine = document.getElementById('btn-line');
+            btnLine.href = data.contact.lineUrl;
+            document.getElementById('label-line').textContent = `แอด LINE: @${data.contact.lineId}`;
+        }
+
+        function switchTemplate(theme) {
+            const btnNature = document.getElementById('btn-nature');
+            const btnMinimal = document.getElementById('btn-minimal');
+
+            if (theme === 'nature') {
+                btnNature.className = "rounded-md px-3 py-1 font-medium transition shadow-xs bg-card text-foreground";
+                btnMinimal.className = "rounded-md px-3 py-1 font-medium transition text-muted-foreground hover:text-foreground";
+                renderTemplate('nature');
+            } else {
+                btnMinimal.className = "rounded-md px-3 py-1 font-medium transition shadow-xs bg-card text-foreground";
+                btnNature.className = "rounded-md px-3 py-1 font-medium transition text-muted-foreground hover:text-foreground";
+                renderTemplate('minimal');
+            }
+        }
+
+        // Initial render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTemplate('nature');
+        });
+    </script>
+</body>
+
+</html>
